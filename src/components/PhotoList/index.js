@@ -101,12 +101,17 @@ function PhotoList() {
     ]);
 
     return (
-        <div className='flex-row'>
-            <img
-                src={photo}
-                alt="Commercial Example"
-                className='img-thumbnail mx-1'
-            />
+        <div>
+            <div className='flex-row'>
+                {photos.map((image, i) => (
+                <img
+                    src={require(`../../assets/small/${category}/${i}.jpg`).default}
+                    alt={image.name}
+                    className='img-thumbnail mx-1'
+                    key={image.name}
+                />
+                ))}
+            </div>
         </div>
     )
 };

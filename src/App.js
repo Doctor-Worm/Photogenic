@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import About from './components/About';
 import Nav from './components/Nav';
 import Gallery from './components/Gallery';
 
 function App() {
+  const [categories] = useState([
+    {
+      name: "Commercial",
+      description: "Photos of grocery stores, food trucks, and other commercial projects",
+    },
+    { name: "Portraits", description: "portraits of people in my life" },
+    { name: "Food", description: "Delicious delicacies" },
+    {
+      name: "Landscape",
+      description: "Fields, farmhouse, waterfalls, and the beauty of nature",
+    }]);
+
+    const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
   return (
     <div>
-      <Nav></Nav>
+      <Nav
+        categories={categories}
+        setCurrentCategory={setCurrentCategory}
+        currentCategory={currentCategory} >
+      </Nav>
       <main>
-        <Gallery></Gallery>
-        <About></About>
+        <div>
+          <Gallery></Gallery>
+          <About></About>
+        </div>
       </main>
     </div>
   );
